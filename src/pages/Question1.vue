@@ -27,40 +27,43 @@
             </thead>
             <tbody>
               <task-container>
-                <span>Lệnh scaffold:</span>
+                <span><strong>Lệnh scaffold:</strong></span>
                 <Code :text="scaffoldCmd"></Code>
               </task-container>
               <task-container>
-                <span>Định nghĩa appsettings.json:</span>
+                <span><strong>Định nghĩa appsettings.json:</strong></span>
                 <Code :text="appsettingCmd"></Code>
               </task-container>
               <task-container>
-                <span>Đổi file appsettings.json sang copy always</span>
+                <span><strong>Đổi file appsettings.json sang copy always</strong></span>
               </task-container>
               <task-container>
-                <span>Lưu ý quan trọng: Xóa connection string trong file DbContext</span>
+                <span class="text-error"><strong>Lưu ý quan trọng: Xóa connection string trong file
+                    DbContext</strong></span>
               </task-container>
               <task-container>
-                <span>Cấu hình Program.cs phần database: </span>
+                <span><strong>Cấu hình Program.cs phần database (Lưu ý: tên file Context có thể khác, trong phần
+                    <>):
+                  </strong></span>
                 <Code :text="databaseCmd"></Code>
               </task-container>
               <task-container>
-                <span>Cấu hình Cors, phần builder </span>
+                <span><strong>Cấu hình Cors, phần builder </strong></span>
                 <Code :text="corsCmdBuilder"></Code>
               </task-container>
               <task-container>
-                <span>phần dưới app.run()</span>
+                <span><strong>phần dưới app.run()</strong></span>
                 <Code :text="corsCmdUse"></Code>
               </task-container>
               <task-container>
-                <span>Sửa launch Settings sang port theo đề bài, thường là 5000</span>
+                <span><strong>Sửa launch Settings sang port theo đề bài, thường là 5000</strong></span>
               </task-container>
               <task-container>
-                <span>Làm xong câu 1, publish bài:</span>
+                <span><strong>Làm xong câu 1, publish bài:</strong></span>
                 <Code :text="publishCmd"></Code>
               </task-container>
               <task-container>
-                <span>Xóa bin, xóa obj, done câu 1</span>
+                <span><strong>Xóa bin, xóa obj, done câu 1</strong></span>
               </task-container>
             </tbody>
           </v-table>
@@ -83,9 +86,9 @@ const fbtUsername = ref<string>('quocdkhe')
 
 
 // computed
-const scaffoldCmd = computed(() => `dotnet ef dbcontext scaffold "server=(local);database=${dbName.value};uid=sa;pwd=${sqlPassword.value};TrustServerCertificate=True;Encrypt=False" Microsoft.EntityFrameworkCore.SqlServer -o Models`);
+const scaffoldCmd = computed(() => `dotnet ef dbcontext scaffold "Server=(local);Database=${dbName.value};User Id=sa;Password=${sqlPassword.value};TrustServerCertificate=True;Encrypt=True;" Microsoft.EntityFrameworkCore.SqlServer -o Models`);
 const appsettingCmd = computed(() => `"ConnectionStrings": {
-  "MyCnn": "server =(local); database = ${dbName.value};uid=sa;pwd=${sqlPassword.value}; Integrated security = True; TrustServerCertificate=True;"
+  "MyCnn": "Server=(local);Database=${dbName.value};User Id=sa;Password=${sqlPassword.value};TrustServerCertificate=True;Encrypt=True;"
 }`)
 const databaseCmd = computed(() => `builder.Services.AddDbContext<${toContextName(dbName.value)}>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("MyCnn")));
 builder.Services.AddScoped<${toContextName(dbName.value)}>();`)
