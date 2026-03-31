@@ -11,8 +11,8 @@
           </template>
           <v-list-item title="Code mẫu EF phần xóa" to="/ef-delete-code" color="primary"></v-list-item>
           <v-list-item title="Cấu hình Odata" to="/odata-config" color="primary"></v-list-item>
-
           <v-list-item title="Công thức phân trang" to="/pagination-formula" color="primary"></v-list-item>
+          <v-list-item title="Sử dụng ApiClient" to="/api-client-usage" color="primary"></v-list-item>
         </v-list-group>
       </v-list>
     </v-navigation-drawer>
