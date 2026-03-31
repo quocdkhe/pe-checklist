@@ -1,5 +1,5 @@
 <template>
-  <v-container class="fill-height d-flex flex-column justify-center">
+  <v-container>
     <v-row justify="center">
       <v-col cols="12">
         <h3>Checklist câu 1: </h3>
@@ -78,7 +78,7 @@ import toContextName from '@/utils/nameConverter';
 
 // state
 const dbName = ref<string>('PE_PRN_Fall22B1')
-const sqlPassword = ref<string>('1234')
+const sqlPassword = ref<string>('123')
 const fbtUsername = ref<string>('quocdkhe')
 
 

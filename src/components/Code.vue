@@ -46,7 +46,7 @@ async function copyToClipboard() {
   align-items: flex-start;
   padding: 12px 44px 12px 16px;
   min-height: 50px;
-  font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+  font-family: 'Cascadia Mono', 'Consolas', monospace;
 }
 
 .code-content {

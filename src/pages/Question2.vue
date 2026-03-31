@@ -1,5 +1,5 @@
 <template>
-  <v-container class="fill-height d-flex flex-column justify-center">
+  <v-container>
     <v-row justify="center">
       <v-col cols="12">
         <h3>Checklist câu 2: </h3>

@@ -25,6 +25,11 @@
             to="/ef-delete-code"
             color="primary"
           ></v-list-item>
+          <v-list-item
+            title="Công thức phân trang"
+            to="/pagination-formula"
+            color="primary"
+          ></v-list-item>
         </v-list-group>
       </v-list>
     </v-navigation-drawer>
@@ -36,7 +41,7 @@
       <v-btn class="ma-2" :icon="mdiThemeLightDark" @click="toggleTheme" />
     </v-app-bar>
 
-    <v-main>
+    <v-main style="height: 100vh; overflow-y: auto;">
       <v-container fluid>
         <router-view />
       </v-container>
