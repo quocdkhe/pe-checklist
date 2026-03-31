@@ -57,6 +57,27 @@
               </div>
             </v-expansion-panel-text>
           </v-expansion-panel>
+
+          <!-- Case 3 -->
+          <v-expansion-panel>
+            <v-expansion-panel-title class="text-warning font-weight-bold">
+              Trường hợp 3: Xóa phân cấp & Many-to-Many
+            </v-expansion-panel-title>
+            <v-expansion-panel-text>
+              <p class="text-subtitle-2 mb-4">Dùng khi cần xóa record cha và tất cả record con ở nhiều cấp độ (Nested Include), đồng thời gỡ mối quan hệ Many-to-Many.</p>
+
+              <div class="mb-4">
+                <p class="font-weight-bold">Code xử lý xóa chi tiết:</p>
+                <Code :text="case3DetailedDeleteCode" class="mt-2"></Code>
+                <p class="mt-2 text-body-2 text-grey">
+                  <strong>Giải thích:</strong> 
+                  1. Dùng <code>.ThenInclude()</code> để lấy các record cấp sâu hơn. 
+                  2. Dùng <code>.SelectMany()</code> để gom tất cả grandchild records vào một list để xóa <code>RemoveRange</code>. 
+                  3. Dùng <code>.Clear()</code> cho các bảng trung gian (Many-to-Many).
+                </p>
+              </div>
+            </v-expansion-panel-text>
+          </v-expansion-panel>
         </v-expansion-panels>
       </v-col>
     </v-row>
@@ -162,6 +183,43 @@ public IActionResult DeleteCopy(int copyId)
     _context.SaveChanges();
     
     return NoContent();
+}`;
+
+// --- CASE 3 ---
+const case3DetailedDeleteCode = `[HttpDelete("{bookId}")]
+public IActionResult DeleteBook(int bookId)
+{
+    var current = _context.Books
+        .Include(b => b.BookCopies)
+        .ThenInclude(bc => bc.BorrowTransactions)
+        .Include(b => b.Authors)
+        .FirstOrDefault(a => a.BookId == bookId);
+
+    if (current == null) return NotFound();
+
+    var deletedCopies = current.BookCopies.Count();
+    var deletedTransactions = current.BookCopies.Sum(bc => bc.BorrowTransactions.Count());
+
+    // 1. Gom tất cả grandchild (Transactions) từ tất cả con (Copies)
+    var allTransactions = current.BookCopies.SelectMany(bc => bc.BorrowTransactions).ToList();
+
+    // 2. Xóa theo thứ tự: Cháu -> Con -> Cha
+    _context.BorrowTransactions.RemoveRange(allTransactions);
+    _context.BookCopies.RemoveRange(current.BookCopies);
+
+    // 3. Xóa quan hệ Many-to-Many (Author - Book)
+    current.Authors.Clear();
+
+    // 4. Cuối cùng xóa record cha
+    _context.Books.Remove(current);
+    _context.SaveChanges();
+
+    return Ok(new
+    {
+        message = "Book deleted successfully",
+        deletedCopies,
+        deletedTransactions
+    });
 }`;
 </script>
 
