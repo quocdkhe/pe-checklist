@@ -7,29 +7,12 @@
 
         <v-list-group value="code-mau">
           <template v-slot:activator="{ props }">
-            <v-list-item
-              v-bind="props"
-              :prepend-icon="mdiCodeBraces"
-              title="Code mẫu"
-              color="primary"
-            ></v-list-item>
+            <v-list-item v-bind="props" :prepend-icon="mdiCodeBraces" title="Code mẫu" color="primary"></v-list-item>
           </template>
+          <v-list-item title="Code mẫu EF phần xóa" to="/ef-delete-code" color="primary"></v-list-item>
+          <v-list-item title="Cấu hình Odata" to="/odata-config" color="primary"></v-list-item>
 
-          <v-list-item
-            title="Cấu hình Odata"
-            to="/odata-config"
-            color="primary"
-          ></v-list-item>
-          <v-list-item
-            title="Code mẫu EF phần xóa"
-            to="/ef-delete-code"
-            color="primary"
-          ></v-list-item>
-          <v-list-item
-            title="Công thức phân trang"
-            to="/pagination-formula"
-            color="primary"
-          ></v-list-item>
+          <v-list-item title="Công thức phân trang" to="/pagination-formula" color="primary"></v-list-item>
         </v-list-group>
       </v-list>
     </v-navigation-drawer>
