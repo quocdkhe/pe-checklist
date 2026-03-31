@@ -1,5 +1,5 @@
 <template>
-  <v-card border="thin">
+  <v-card border="thin" width="100%" class="fill-width">
     <v-sheet class="code-block">
       <pre class="code-content"><code>{{ text }}</code></pre>
 
@@ -36,11 +36,16 @@ async function copyToClipboard() {
 </script>
 
 <style scoped>
+.fill-width {
+  flex: 1 1 100%;
+}
+
 .code-block {
   position: relative;
   display: flex;
-  align-items: center;
-  padding: 8px 44px 8px 16px;
+  align-items: flex-start;
+  padding: 12px 44px 12px 16px;
+  min-height: 50px;
   font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
 }
 
@@ -65,7 +70,7 @@ code {
   top: 6px;
   right: 6px;
   opacity: 0.6;
-  transition: opacity 0.2s;
+  transition: opacity 0.2s, transform 0.2s;
 }
 
 .copy-btn:hover {

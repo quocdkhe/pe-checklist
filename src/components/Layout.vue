@@ -2,25 +2,30 @@
   <v-app id="inspire">
     <v-navigation-drawer v-model="drawer">
       <v-list density="compact" nav>
-        <v-list-item
-          :prepend-icon="mdiFormatListChecks"
-          title="Question 1"
-          to="/"
-          exact
-          color="primary"
-        ></v-list-item>
-        <v-list-item
-          :prepend-icon="mdiHelpCircle"
-          title="Question 2"
-          to="/question2"
-          color="primary"
-        ></v-list-item>
-        <v-list-item
-          :prepend-icon="mdiHelpCircleOutline"
-          title="Question 3"
-          to="/question3"
-          color="primary"
-        ></v-list-item>
+        <v-list-item :prepend-icon="mdiFormatListChecks" title="Question 1" to="/" exact color="primary"></v-list-item>
+        <v-list-item :prepend-icon="mdiHelpCircle" title="Question 2" to="/question2" color="primary"></v-list-item>
+
+        <v-list-group value="code-mau">
+          <template v-slot:activator="{ props }">
+            <v-list-item
+              v-bind="props"
+              :prepend-icon="mdiCodeBraces"
+              title="Code mẫu"
+              color="primary"
+            ></v-list-item>
+          </template>
+
+          <v-list-item
+            title="Cấu hình Odata"
+            to="/odata-config"
+            color="primary"
+          ></v-list-item>
+          <v-list-item
+            title="Code mẫu EF phần xóa"
+            to="/ef-delete-code"
+            color="primary"
+          ></v-list-item>
+        </v-list-group>
       </v-list>
     </v-navigation-drawer>
 
@@ -28,11 +33,7 @@
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 
       <v-app-bar-title>PE Checklist</v-app-bar-title>
-      <v-btn
-        class="ma-2"
-        :icon="mdiThemeLightDark"
-        @click="toggleTheme"
-      />
+      <v-btn class="ma-2" :icon="mdiThemeLightDark" @click="toggleTheme" />
     </v-app-bar>
 
     <v-main>
@@ -50,7 +51,8 @@ import {
   mdiThemeLightDark,
   mdiFormatListChecks,
   mdiHelpCircle,
-  mdiHelpCircleOutline
+  mdiHelpCircleOutline,
+  mdiCodeBraces
 } from '@mdi/js'
 
 const drawer = ref<boolean>(true)
