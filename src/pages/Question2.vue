@@ -20,19 +20,19 @@
             <tbody>
               <task-container>
                 <span><strong>Cấu hình razor page</strong></span>
-                <Code :text="razorPageConfig"></Code>
+                <Code :text="razorPageConfig" language="csharp"></Code>
               </task-container>
               <task-container>
                 <span><strong>Tạo folder services, thêm file ApiClientService</strong></span>
-                <Code :text="apiClientServiceCode"></Code>
+                <Code :text="apiClientServiceCode" language="csharp"></Code>
               </task-container>
               <task-container>
                 <span><strong>Register service</strong></span>
-                <Code :text="registerService"></Code>
+                <Code :text="registerService" language="csharp"></Code>
               </task-container>
               <task-container>
                 <span><strong>Làm xong câu 2, publish bài:</strong></span>
-                <Code :text="publishCmd"></Code>
+                <Code :text="publishCmd" language="csharp"></Code>
               </task-container>
               <task-container>
                 <span><strong>Xóa bin, xóa obj, done câu 2</strong></span>

@@ -5,6 +5,6 @@
 </template>
 
 <script lang="ts" setup>
-import { mdiThemeLightDark } from '@mdi/js'
-import Layout from './components/Layout.vue';
+import { mdiThemeLightDark } from "@mdi/js";
+import Layout from "./components/Layout.vue";
 </script>

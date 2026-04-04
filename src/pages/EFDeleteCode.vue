@@ -19,12 +19,12 @@
               
               <div class="mb-4">
                 <p class="font-weight-bold">Ví dụ Entity Employee (có các collection Navigations):</p>
-                <Code :text="employeeEntityCode" class="mt-2"></Code>
+                <Code :text="employeeEntityCode" language="csharp" class="mt-2"></Code>
               </div>
 
               <div class="mb-4">
                 <p class="font-weight-bold">Code xử lý xóa:</p>
-                <Code :text="deleteMethodCode" class="mt-2"></Code>
+                <Code :text="deleteMethodCode" language="csharp" class="mt-2"></Code>
                 <p class="mt-2 text-body-2 text-grey">
                   <strong>Giải thích:</strong> Khi gọi <code>.Clear()</code>, EF sẽ set Foreign Key của các record con thành <code>null</code> (nếu nullable) và sau đó ta xóa record cha bình thường.
                 </p>
@@ -43,14 +43,14 @@
               <div class="mb-4">
                 <p class="font-weight-bold">Ví dụ Entity BookCopy và BorrowHistory:</p>
                 <div class="d-flex flex-column gap-2">
-                  <Code :text="bookCopyEntityCode"></Code>
-                  <Code :text="borrowHistoryEntityCode"></Code>
+                  <Code :text="bookCopyEntityCode" language="csharp"></Code>
+                  <Code :text="borrowHistoryEntityCode" language="csharp"></Code>
                 </div>
               </div>
 
               <div class="mb-4">
                 <p class="font-weight-bold">Code xử lý xóa (Dùng RemoveRange):</p>
-                <Code :text="deleteCopyMethodCode" class="mt-2"></Code>
+                <Code :text="deleteCopyMethodCode" language="csharp" class="mt-2"></Code>
                 <p class="mt-2 text-body-2 text-grey">
                   <strong>Giải thích:</strong> Vì Foreign Key là NOT NULL, ta không thể set nó thành null. Ta phải dùng <code>_context.RemoveRange()</code> để xóa sạch các record con trong DB trước khi xóa record cha.
                 </p>
@@ -68,7 +68,7 @@
 
               <div class="mb-4">
                 <p class="font-weight-bold">Code xử lý xóa chi tiết:</p>
-                <Code :text="case3DetailedDeleteCode" class="mt-2"></Code>
+                <Code :text="case3DetailedDeleteCode" language="csharp" class="mt-2"></Code>
                 <p class="mt-2 text-body-2 text-grey">
                   <strong>Giải thích:</strong> 
                   1. Dùng <code>.ThenInclude()</code> để lấy các record cấp sâu hơn. 

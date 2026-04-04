@@ -16,7 +16,7 @@
             </v-expansion-panel-title>
             <v-expansion-panel-text>
               <p class="mb-4">File này thường được đặt trong thư mục <code>Services/</code>.</p>
-              <Code :text="apiClientServiceCode"></Code>
+              <Code :text="apiClientServiceCode" language="csharp"></Code>
             </v-expansion-panel-text>
           </v-expansion-panel>
 
@@ -27,7 +27,7 @@
             </v-expansion-panel-title>
             <v-expansion-panel-text>
               <p class="mb-4">Ví dụ sử dụng để Load danh sách Directors, Movies và xử lý Xóa Movie:</p>
-              <Code :text="usageCode"></Code>
+              <Code :text="usageCode" language="csharp"></Code>
               
               <div class="mt-4">
                 <p class="font-weight-bold">Giải thích các bước:</p>

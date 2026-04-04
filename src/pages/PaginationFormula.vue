@@ -25,12 +25,12 @@
 
               <div class="mb-4">
                 <p class="font-weight-bold mb-2">Công thức tính toán:</p>
-                <Code :text="paginationLogic" class="mt-2"></Code>
+                <Code :text="paginationLogic" language="csharp" class="mt-2"></Code>
               </div>
 
               <div>
                 <p class="font-weight-bold mb-2">Tính tổng số trang (TotalPages):</p>
-                <Code text="int totalPages = (int)Math.Ceiling((double)totalCount / pageSize);"></Code>
+                <Code text="int totalPages = (int)Math.Ceiling((double)totalCount / pageSize);" language="csharp"></Code>
               </div>
             </v-expansion-panel-text>
           </v-expansion-panel>
@@ -42,9 +42,9 @@
             </v-expansion-panel-title>
             <v-expansion-panel-text>
               <p class="mb-4">Ví dụ API get danh sách Book với phân trang:</p>
-              <Code :text="paginationControllerCode"></Code>
+              <Code :text="paginationControllerCode" language="csharp"></Code>
               
-              <v-alert type="warning" icon="mdi-alert" variant="text" class="mt-4 density-compact">
+              <v-alert type="warning" :icon="mdiAlert" variant="text" class="mt-4 density-compact">
                 Luôn gọi <code>.OrderBy()</code> trước khi <code>.Skip()</code> để đảm bảo thứ tự dữ liệu không bị đảo lộn giữa các trang.
               </v-alert>
             </v-expansion-panel-text>
@@ -58,6 +58,7 @@
 
 <script setup lang="ts">
 import Code from '@/components/Code.vue'
+import { mdiAlert } from '@mdi/js'
 
 const paginationLogic = `// Số bản ghi cần bỏ qua
 int skipCount = (pageNumber - 1) * pageSize;

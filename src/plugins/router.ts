@@ -6,6 +6,7 @@ import OdataConfig from '@/pages/OdataConfig.vue'
 import EFDeleteCode from '@/pages/EFDeleteCode.vue'
 import PaginationFormula from '@/pages/PaginationFormula.vue'
 import ApiClientUsage from '@/pages/ApiClientUsage.vue'
+import RazorPage from '@/pages/RazorPage.vue'
 
 const routes = [
   { path: '/', component: Question1 },
@@ -14,6 +15,7 @@ const routes = [
   { path: '/ef-delete-code', component: EFDeleteCode },
   { path: '/pagination-formula', component: PaginationFormula },
   { path: '/api-client-usage', component: ApiClientUsage },
+  { path: '/razor-page', component: RazorPage },
 ]
 
 export const router = createRouter({

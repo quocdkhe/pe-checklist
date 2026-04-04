@@ -28,11 +28,11 @@
             <tbody>
               <task-container>
                 <span><strong>Lệnh scaffold:</strong></span>
-                <Code :text="scaffoldCmd"></Code>
+                <Code :text="scaffoldCmd" language="csharp"></Code>
               </task-container>
               <task-container>
                 <span><strong>Định nghĩa appsettings.json:</strong></span>
-                <Code :text="appsettingCmd"></Code>
+                <Code :text="appsettingCmd" language="json"></Code>
               </task-container>
               <task-container>
                 <span><strong>Đổi file appsettings.json sang copy always</strong></span>
@@ -45,22 +45,22 @@
                 <span><strong>Cấu hình Program.cs phần database (Lưu ý: tên file Context có thể khác, trong phần
                     <>):
                   </strong></span>
-                <Code :text="databaseCmd"></Code>
+                <Code :text="databaseCmd" language="csharp"></Code>
               </task-container>
               <task-container>
                 <span><strong>Cấu hình Cors, phần builder </strong></span>
-                <Code :text="corsCmdBuilder"></Code>
+                <Code :text="corsCmdBuilder" language="csharp"></Code>
               </task-container>
               <task-container>
                 <span><strong>phần dưới app.run()</strong></span>
-                <Code :text="corsCmdUse"></Code>
+                <Code :text="corsCmdUse" language="csharp"></Code>
               </task-container>
               <task-container>
                 <span><strong>Sửa launch Settings sang port theo đề bài, thường là 5000</strong></span>
               </task-container>
               <task-container>
                 <span><strong>Làm xong câu 1, publish bài:</strong></span>
-                <Code :text="publishCmd"></Code>
+                <Code :text="publishCmd" language="csharp"></Code>
               </task-container>
               <task-container>
                 <span><strong>Xóa bin, xóa obj, done câu 1</strong></span>

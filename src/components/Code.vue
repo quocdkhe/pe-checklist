@@ -1,36 +1,58 @@
 <template>
   <v-card border="thin" width="100%" class="fill-width">
     <v-sheet class="code-block">
-      <pre class="code-content"><code>{{ text }}</code></pre>
+      <pre class="code-content"><code v-html="highlightedCode"></code></pre>
 
-      <v-btn :icon="copied ? mdiCheck : mdiContentCopy" variant="text" size="small" class="copy-btn"
-        :color="copied ? 'success' : undefined" @click="copyToClipboard" />
+      <v-btn
+        :icon="copied ? mdiCheck : mdiContentCopy"
+        variant="text"
+        size="small"
+        class="copy-btn"
+        :color="copied ? 'success' : undefined"
+        @click="copyToClipboard"
+      />
     </v-sheet>
   </v-card>
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import { mdiCheck, mdiContentCopy } from '@mdi/js'
+import { ref, computed } from "vue";
+import { mdiCheck, mdiContentCopy } from "@mdi/js";
+import hljs from "highlight.js";
+import "highlight.js/styles/atom-one-dark.css";
 
 const props = defineProps({
   text: {
     type: String,
     required: true,
   },
-})
+  language: {
+    type: String,
+    default: "csharp",
+    validator: (value) =>
+      ["csharp", "html", "xml", "javascript", "python", "json"].includes(value),
+  },
+});
 
-const copied = ref(false)
+const copied = ref(false);
+
+const highlightedCode = computed(() => {
+  try {
+    return hljs.highlight(props.text, { language: props.language }).value;
+  } catch {
+    return hljs.highlightAuto(props.text).value;
+  }
+});
 
 async function copyToClipboard() {
   try {
-    await navigator.clipboard.writeText(props.text)
-    copied.value = true
+    await navigator.clipboard.writeText(props.text);
+    copied.value = true;
     setTimeout(() => {
-      copied.value = false
-    }, 2000)
+      copied.value = false;
+    }, 2000);
   } catch (e) {
-    console.error('Failed to copy:', e)
+    console.error("Failed to copy:", e);
   }
 }
 </script>
@@ -46,7 +68,7 @@ async function copyToClipboard() {
   align-items: flex-start;
   padding: 12px 44px 12px 16px;
   min-height: 50px;
-  font-family: 'Cascadia Mono', 'Consolas', monospace;
+  font-family: "Cascadia Mono", "Consolas", monospace;
 }
 
 .code-content {
@@ -61,8 +83,6 @@ async function copyToClipboard() {
 
 code {
   font-family: inherit;
-  background: none;
-  padding: 0;
 }
 
 .copy-btn {
@@ -70,7 +90,9 @@ code {
   top: 6px;
   right: 6px;
   opacity: 0.6;
-  transition: opacity 0.2s, transform 0.2s;
+  transition:
+    opacity 0.2s,
+    transform 0.2s;
 }
 
 .copy-btn:hover {

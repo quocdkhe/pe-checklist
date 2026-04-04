@@ -15,12 +15,12 @@
             <tbody>
               <task-container>
                 <span>Cấu hình Program.cs:</span>
-                <Code :text="odataProgramConfig"></Code>
+                <Code :text="odataProgramConfig" language="csharp"></Code>
               </task-container>
               
               <task-container>
                 <span>Cấu hình Controller (Select DTO, EnableQuery, IQueryable):</span>
-                <Code :text="odataControllerConfig"></Code>
+                <Code :text="odataControllerConfig" language="csharp"></Code>
               </task-container>
 
               <task-container>
