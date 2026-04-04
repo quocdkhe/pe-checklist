@@ -5,10 +5,31 @@
         <h2 class="mb-4">Hướng dẫn Binding trong Razor Pages (C#)</h2>
         
         <v-alert type="info" variant="tonal" class="mb-6">
-          Trong Razor Pages, chúng ta sử dụng thuộc tính <code>[BindProperty]</code> để liên kết dữ liệu giữa Form (HTML) và Code-behind (PageModel).
+          <p>Trong Razor Pages, chúng ta sử dụng thuộc tính <code>[BindProperty]</code> để liên kết dữ liệu giữa Form (HTML) và Code-behind (PageModel).</p>
+          <p class="mt-2 font-weight-bold italic text-error">Lưu ý: Phải có <code>@addTagHelper</code> và <code>@Html.AntiForgeryToken()</code> để form hoạt động.</p>
         </v-alert>
 
         <v-expansion-panels multiple>
+          <!-- 0. Lưu ý bắt buộc -->
+          <v-expansion-panel>
+            <v-expansion-panel-title class="text-error font-weight-bold">
+              0. Cấu hình bắt buộc (Tag Helpers & Security)
+            </v-expansion-panel-title>
+            <v-expansion-panel-text>
+              <p class="mb-4">Để sử dụng được các <code>asp-for</code> và submit form thành công, bạn CẦN có các dòng sau:</p>
+              
+              <p class="text-subtitle-2 ml-1 text-grey">_ViewImports.cshtml (hoặc đầu file .cshtml)</p>
+              <Code text="@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers" language="html" class="mb-4"></Code>
+
+              <p class="text-subtitle-2 ml-1 text-grey">Bên trong thẻ &lt;form&gt;</p>
+              <Code text="@Html.AntiForgeryToken()" language="html"></Code>
+              
+              <v-alert type="warning" density="compact" variant="tonal" class="mt-4">
+                Nếu thiếu <code>@addTagHelper</code>, các thuộc tính <code>asp-for</code> sẽ bị trình duyệt coi là attribute thường và không có tác dụng binding. Nếu thiếu <code>AntiForgeryToken</code>, bạn sẽ gặp lỗi <strong>400 Bad Request</strong> khi submit.
+              </v-alert>
+            </v-expansion-panel-text>
+          </v-expansion-panel>
+
           <!-- 1. Cơ bản về BindProperty -->
           <v-expansion-panel>
             <v-expansion-panel-title class="text-primary font-weight-bold">
