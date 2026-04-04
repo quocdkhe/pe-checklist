@@ -24,8 +24,67 @@
               </task-container>
 
               <task-container>
-                <span>Lưu ý: [EnableQuery] tự động xử lý $filter, $top, $skip từ URL</span>
+                <span>Lưu ý: <code>[EnableQuery]</code> tự động xử lý $filter, $top, $skip từ URL</span>
               </task-container>
+            </tbody>
+          </v-table>
+        </v-sheet>
+
+        <h3 class="mt-8 mb-4">Các tham số Query String phổ biến:</h3>
+        <v-sheet border="thin">
+          <v-table>
+            <thead>
+              <tr>
+                <th class="font-weight-bold" style="width: 200px">Tham số</th>
+                <th class="font-weight-bold">Ý nghĩa & Ví dụ</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>$filter</code></td>
+                <td>
+                  Lọc dữ liệu theo điều kiện.<br/>
+                  <code class="text-primary">? $filter=Name eq 'John'</code> (Bằng)<br/>
+                  <code class="text-primary">? $filter=Price gt 100</code> (Lớn hơn - Greater Than)<br/>
+                  <code class="text-primary">? $filter=contains(Name, 'A')</code> (Chứa chuỗi)
+                </td>
+              </tr>
+              <tr>
+                <td><code>$select</code></td>
+                <td>
+                  Chỉ lấy các trường cụ thể (giảm tải payload).<br/>
+                  <code class="text-primary">? $select=OrderId,OrderDate</code>
+                </td>
+              </tr>
+              <tr>
+                <td><code>$orderby</code></td>
+                <td>
+                  Sắp xếp dữ liệu.<br/>
+                  <code class="text-primary">? $orderby=OrderDate desc</code> (Giảm dần)<br/>
+                  <code class="text-primary">? $orderby=Name asc</code> (Tăng dần)
+                </td>
+              </tr>
+              <tr>
+                <td><code>$expand</code></td>
+                <td>
+                  Lấy kèm các bảng liên quan (giống Include trong EF).<br/>
+                  <code class="text-primary">? $expand=Customer,OrderDetails</code>
+                </td>
+              </tr>
+              <tr>
+                <td><code>$top</code> & <code>$skip</code></td>
+                <td>
+                  Dùng để phân trang.<br/>
+                  <code class="text-primary">? $top=10&$skip=20</code> (Lấy 10 dòng, bỏ qua 20 dòng đầu)
+                </td>
+              </tr>
+              <tr>
+                <td><code>$count</code></td>
+                <td>
+                  Trả về tổng số bản ghi.<br/>
+                  <code class="text-primary">? $count=true</code>
+                </td>
+              </tr>
             </tbody>
           </v-table>
         </v-sheet>
